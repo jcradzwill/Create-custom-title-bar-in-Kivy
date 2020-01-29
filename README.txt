@@ -8,8 +8,7 @@ Please note that this workaround example will ONLY work on Windows OS since it i
 
 This example utilizes pynput for the Window dragging and resize functionality. You can easily install pynput using pip. We use pynput instead of Kivy's on_touch_move method because it prevents the window from 'skipping' around when it is dragged and resized as this is very annoying and not user friendly. 
 
-This example also utilizes UI Automation. You can easily install uiautomation using pip. We use UI Automation to get around a bug in the Kivy source code that prevents the App from minimizing/maximizing when the app icon is clicked
-in the taskbar while Window.borderless is set to 1. I have made a post about this bug on github here: https://github.com/kivy/kivy/issues/6707 and on stackoverflow here: https://stackoverflow.com/questions/59910143/cant-minimize-kivy-window-when-borderless-1-border-disabled
+This example also utilizes UI Automation. You can easily install uiautomation using pip. We use UI Automation to get around a bug in the Kivy source code that prevents the App from minimizing/maximizing when the app icon is clicked in the taskbar while Window.borderless is set to 1. I have made a post about this bug on github here: https://github.com/kivy/kivy/issues/6707 and on stackoverflow here: https://stackoverflow.com/questions/59910143/cant-minimize-kivy-window-when-borderless-1-border-disabled
 
 It would be really nice to get this bug fixed because it is very difficult to find and execute OS API functions that monitor clicks on app icons in the taskbar!
 
