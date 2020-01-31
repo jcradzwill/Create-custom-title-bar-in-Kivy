@@ -16,7 +16,7 @@ It would be really nice to get this bug fixed because it is very difficult to fi
 
 Please see below for an overview of each of the files uploaded to github to support this example:
 
-1) __init__.py - The Window Kivy Source code file that has been modified to make this custom title bar example work. You can find this file locally on your machine here: Python37-32\Lib\site-packages\kivy\core\window\__init__.py. All code changes to this file are marked with a comment tag of #NEW CODE HERE within the file. I have specific instructions on how to modify this file in the steps below. However, it would be much easier for you to simply replace YOUR existing Kivy source code file with this one. I would recommend backing up the existing file before replacing it with this one just to be safe. 
+1) __init__.py - The Window Kivy source code file that has been modified to make this custom title bar example work. You can find this file locally on your machine here: Python37-32\Lib\site-packages\kivy\core\window\__init__.py. All code changes to this file are marked with a comment tag of #NEW CODE HERE within the file. I have specific instructions on how to modify this file in the steps below. However, it would be much easier for you to simply replace YOUR existing Kivy source code file with this one. I would recommend backing up the existing file before replacing it with this one just to be safe. 
 
 2) uiautomation.py - The uiautomation source code file that has been modified to make this custom title bar example work. After you pip install uiautomation, you can find the file locally here: Python37-32\Lib\site-packages\uiautomation\uiautomation.py. All code changes to this file are marked with a comment tag of #NEW CODE HERE within the file. I have specific instructions on how to modify this file in the steps below. However, it would be much easier for you to simply replace YOUR existing uiatuomation file with this one. I would recommend backing up the existing file before replacing it with this one just to be safe. 
 
@@ -26,11 +26,11 @@ Please see below for an overview of each of the files uploaded to github to supp
 
 ------------Kivy Window Source Code File Modification Steps------------
 
-Please note that these Kivy Source code changes and this example will ONLY work on Windows OS since it involves Windows API code additions.
+Please note that these Kivy source code changes and this example will ONLY work on Windows OS since it involves Windows API code additions.
 
-The first set of steps below involve updating the Window Kivy Source code located here: Python37-32\Lib\site-packages\kivy\core\window\__init__.py. You can open the Window Kivy source code file using an IDE to modify the code.
+The first set of steps below involve updating the Window Kivy source code located here: Python37-32\Lib\site-packages\kivy\core\window\__init__.py. You can open the Window Kivy source code file using an IDE to modify the code.
 
-1) Within the Window Kivy Source code file, there are import statements at the top. Insert these new import statements (see where it says NEW CODE HERE):
+1) Within the Window Kivy source code file, there are import statements at the top. Insert these new import statements (see where it says NEW CODE HERE):
 
 from os.path import join, exists
 from os import getcwd
@@ -113,7 +113,7 @@ class WindowBase(EventDispatcher):
 
 ------------uiautomation Source Code File Modification Steps------------
 
-The next set of steps below involve updating the uiautomation Source code located here: Python37-32\Lib\site-packages\uiautomation\uiautomation.py. You can open the uiautomation source code file using an IDE to modify the code.
+The next set of steps below involve updating the uiautomation source code located here: Python37-32\Lib\site-packages\uiautomation\uiautomation.py. You can open the uiautomation source code file using an IDE to modify the code.
 
 1) Locate the existing 'def ControlFromPoint' method in the file and add these 3 new methods below it (see where it says NEW CODE HERE):
 
@@ -143,7 +143,7 @@ def GetElementInfo(element): #gets the property information about an element
 
 ------------Running the Test App------------
 
-Once you have completed the Kivy Source code and uiautomation source code modifications mentioned above, you should be able to run the test App (test.py file) with no problems. 
+Once you have completed the Kivy source code and uiautomation source code modifications mentioned above, you should be able to run the test App (test.py file) with no problems. 
 
 Locate the example test.py file, run it, and see what it does. Within this test app, there are specific methods that are called to account for the user minimizing, maximizing, windowing, and closing the window using the buttons at the top and clicking the python icon in the taskbar. You should also be able to 'window' the app, move it around, and resize it.
 
