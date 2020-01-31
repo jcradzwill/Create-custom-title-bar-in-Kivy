@@ -2,18 +2,14 @@
 
 github link: https://github.com/jcradzwill/Create-custom-title-bar-in-Kivy
 
-As of 1/28/2020, the base Kivy framework does not naturally support custom title bar features without the implementation of special workaround code. This workaround example will show you how to remove the Windows title bar and replace it 
-with a custom title bar with minimize, window, maximize, close, window dragging, and window resizing features in Windows OS. The custom title bar will contain buttons for minimize, maximize, window, and close in the top right corner of the App. 
+As of 1/28/2020, the base Kivy framework does not naturally support custom title bar features without the implementation of special workaround code. This workaround example will show you how to remove the Windows title bar and replace it with a custom title bar with minimize, window, maximize, close, window dragging, and window resizing features in Windows OS. The custom title bar will contain buttons for minimize, maximize, window, and close in the top right corner of the App. 
 
-Please note that this workaround example will ONLY work on Windows OS since it involves Windows API code modifications. It was built and tested on a PC using Windows 10 OS. If you want to make this work on Mac OS,
-you will need to implement similar code using the Mac OS APIs. 
+Please note that this workaround example will ONLY work on Windows OS since it involves Windows API code modifications. It was built and tested on a PC using Windows 10 OS. If you want to make this work on Mac OS, you will need to implement similar code using the Mac OS APIs. 
 
 This example utilizes pynput for the Window dragging and resize functionality. You can easily install pynput using pip. We use pynput instead of Kivy's on_touch_move method because it prevents the window from 'skipping'
 around when it is dragged and resized as this is very annoying and not user friendly. 
 
-This example also utilizes UI Automation. You can easily install uiautomation using pip. We use UI Automation to get around a bug in the Kivy source code that prevents the App from minimizing/maximizing when the app icon is clicked
-in the taskbar while Window.borderless is set to 1. I have made a post about this bug on github here: https://github.com/kivy/kivy/issues/6707 
-and on stackoverflow here: https://stackoverflow.com/questions/59910143/cant-minimize-kivy-window-when-borderless-1-border-disabled
+This example also utilizes UI Automation. You can easily install uiautomation using pip. We use UI Automation to get around a bug in the Kivy source code that prevents the App from minimizing/maximizing when the app icon is clicked in the taskbar while Window.borderless is set to 1. I have made a post about this bug on github here: https://github.com/kivy/kivy/issues/6707 and on stackoverflow here: https://stackoverflow.com/questions/59910143/cant-minimize-kivy-window-when-borderless-1-border-disabled
 
 It would be really nice to get this bug fixed because it is very difficult to find and execute OS API functions that monitor clicks on app icons in the taskbar!
 
@@ -21,21 +17,13 @@ It would be really nice to get this bug fixed because it is very difficult to fi
 
 Please see below for an overview of each of the files uploaded to github to support this example:
 
-1) __init__.py - The Window Kivy Source code file that has been modified to make this custom title bar example work. You can find this file locally on your machine here: 
-Python37-32\Lib\site-packages\kivy\core\window\__init__.py. All code changes to this file are marked with a comment tag of #NEW CODE HERE within the file. I have specific instructions on 
-how to modify this file in the steps below. However, it would be much easier for you to simply replace YOUR existing Kivy source code file with this one. I would recommend backing up the existing
-file before replacing it with this one just to be safe. 
+1) __init__.py - The Window Kivy Source code file that has been modified to make this custom title bar example work. You can find this file locally on your machine here: Python37-32\Lib\site-packages\kivy\core\window\__init__.py. All code changes to this file are marked with a comment tag of #NEW CODE HERE within the file. I have specific instructions on how to modify this file in the steps below. However, it would be much easier for you to simply replace YOUR existing Kivy source code file with this one. I would recommend backing up the existing file before replacing it with this one just to be safe. 
 
-2) uiautomation.py - The uiautomation source code file that has been modified to make this custom title bar example work. After you pip install uiautomation, you can find the file locally here:
-Python37-32\Lib\site-packages\uiautomation\uiautomation.py. All code changes to this file are marked with a comment tag of #NEW CODE HERE within the file. I have specific instructions on 
-how to modify this file in the steps below. However, it would be much easier for you to simply replace YOUR existing uiatuomation file with this one. I would recommend backing up the existing
-file before replacing it with this one just to be safe. 
+2) uiautomation.py - The uiautomation source code file that has been modified to make this custom title bar example work. After you pip install uiautomation, you can find the file locally here: Python37-32\Lib\site-packages\uiautomation\uiautomation.py. All code changes to this file are marked with a comment tag of #NEW CODE HERE within the file. I have specific instructions on how to modify this file in the steps below. However, it would be much easier for you to simply replace YOUR existing uiatuomation file with this one. I would recommend backing up the existing file before replacing it with this one just to be safe. 
 
-3) test.py - This is the custom title bar test app that should run properly once you implement the code changes to the Kivy source file and uiautomation file mentioned above. It should launch a Kivy App that has 
-minimize, maximize, window, and close buttons in the top right corner that are clickable. You should also be able to move the App window around and resize it on the edges. 
+3) test.py - This is the custom title bar test app that should run properly once you implement the code changes to the Kivy source file and uiautomation file mentioned above. It should launch a Kivy App that has minimize, maximize, window, and close buttons in the top right corner that are clickable. You should also be able to move the App window around and resize it on the edges. 
 
-4) close_icon_blue.png, maximize_icon_blue.png, minimize_icon_blue.png, and window_icon_blue.png - These are the png images being used for the minimize, maximize, window, and close buttons in the top right corner
-of the test App. Make sure you place these files in the same folder as the test.py file when you run it.
+4) close_icon_blue.png, maximize_icon_blue.png, minimize_icon_blue.png, and window_icon_blue.png - These are the png images being used for the minimize, maximize, window, and close buttons in the top right corner of the test App. Make sure you place these files in the same folder as the test.py file when you run it.
 
 ------------Kivy Window Source Code File Modification Steps------------
 
@@ -158,10 +146,9 @@ def GetElementInfo(element): #gets the property information about an element
 
 Once you have completed the Kivy Source code and uiautomation source code modifications mentioned above, you should be able to run the test App (test.py file) with no problems. 
 
-Locate the example test.py file, run it, and see what it does. Within this test app, there are specific methods that are called to account for the user minimizing, maximizing, windowing, 
-and closing the window using the buttons at the top and clicking the python icon in the taskbar. You should also be able to 'window' the app, move it around, and resize it.
-Within the test app's code, you will notice that we utilize the newly created variables that we created in the source code modification steps above. Since the native Windows title bar 
-is gone, we must account for all aspects of the user manipulating the window using python: minimize, maximize, window, close, window dragging, and window resizing.
+Locate the example test.py file, run it, and see what it does. Within this test app, there are specific methods that are called to account for the user minimizing, maximizing, windowing, and closing the window using the buttons at the top and clicking the python icon in the taskbar. You should also be able to 'window' the app, move it around, and resize it.
+
+Within the test app's code, you will notice that we utilize the newly created variables that we created in the source code modification steps above. Since the native Windows title bar is gone, we must account for all aspects of the user manipulating the window using python: minimize, maximize, window, close, window dragging, and window resizing.
 
 ------------Future Development------------
 
