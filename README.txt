@@ -90,6 +90,7 @@ class WindowBase(EventDispatcher):
     last_screen_pos_top = original_screen_pos_top
     last_screen_width = original_screen_width 
     last_screen_height = original_screen_height
+    window_state = 'open'
 
     '''WindowBase is an abstract window widget for any window implementation.
 
